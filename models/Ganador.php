@@ -20,7 +20,7 @@ class Ganador {
         $sql = "SELECT g.*, s.titulo as sorteo_titulo, s.premio, s.tipo_premio, s.imagen_banner 
                 FROM ganadores g 
                 JOIN sorteos s ON g.sorteo_id = s.id 
-                ORDER BY g.fecha_premiacion DESC, g.id DESC 
+                ORDER BY g.id DESC 
                 LIMIT :limit";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
