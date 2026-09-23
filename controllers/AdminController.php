@@ -114,8 +114,10 @@ class AdminController {
                 $_SESSION['admin_nombre'] = $user['nombre'];
 
                 // Reset attempts on successful login
-                $stmtReset = $db->prepare("DELETE FROM login_attempts WHERE ip_address = :ip");
-                $stmtReset->execute([':ip' => $ip_address]);
+                try {
+                    $stmtReset = $db->prepare("DELETE FROM login_attempts WHERE ip_address = :ip");
+                    $stmtReset->execute([':ip' => $ip_address]);
+                } catch (Exception $e) { /* Ignore read-only errors on Vercel */ }
 
                 $_SESSION['flash_message'] = "¡Bienvenido al Panel de Control, {$user['nombre']}!";
                 $_SESSION['flash_type'] = "success";
@@ -124,13 +126,15 @@ class AdminController {
                 $attempts = ($attemptData) ? $attemptData['attempts'] + 1 : 1;
                 $blocked = ($attempts >= 3) ? 1 : 0;
 
-                if ($attemptData) {
-                    $stmtUpdate = $db->prepare("UPDATE login_attempts SET attempts = :attempts, blocked = :blocked WHERE ip_address = :ip");
-                    $stmtUpdate->execute([':attempts' => $attempts, ':blocked' => $blocked, ':ip' => $ip_address]);
-                } else {
-                    $stmtInsert = $db->prepare("INSERT INTO login_attempts (ip_address, attempts, blocked) VALUES (:ip, :attempts, :blocked)");
-                    $stmtInsert->execute([':ip' => $ip_address, ':attempts' => $attempts, ':blocked' => $blocked]);
-                }
+                try {
+                    if ($attemptData) {
+                        $stmtUpdate = $db->prepare("UPDATE login_attempts SET attempts = :attempts, blocked = :blocked WHERE ip_address = :ip");
+                        $stmtUpdate->execute([':attempts' => $attempts, ':blocked' => $blocked, ':ip' => $ip_address]);
+                    } else {
+                        $stmtInsert = $db->prepare("INSERT INTO login_attempts (ip_address, attempts, blocked) VALUES (:ip, :attempts, :blocked)");
+                        $stmtInsert->execute([':ip' => $ip_address, ':attempts' => $attempts, ':blocked' => $blocked]);
+                    }
+                } catch (Exception $e) { /* Ignore read-only errors on Vercel */ }
 
                 if ($blocked) {
                     $_SESSION['flash_message'] = "Tu acceso ha sido bloqueado permanentemente por seguridad.";
