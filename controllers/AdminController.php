@@ -37,6 +37,22 @@ class AdminController {
         }
 
         $sorteos = $isLoggedIn ? $this->modelSorteo->getAll() : [];
+        
+        $visitasTotales = 0;
+        $visitasHoy = 0;
+        
+        if ($isLoggedIn) {
+            try {
+                $db = Database::getConnection();
+                $visitasTotales = (int)$db->query("SELECT COUNT(*) FROM visitas")->fetchColumn();
+                $stmt = $db->prepare("SELECT COUNT(*) FROM visitas WHERE fecha_visita = ?");
+                $stmt->execute([date('Y-m-d')]);
+                $visitasHoy = (int)$stmt->fetchColumn();
+            } catch (Exception $e) {
+                // Ignore if table doesn't exist
+            }
+        }
+
         $pageTitle = "Panel de Administración - Sorteos Free Fire";
 
         $mensaje = $_SESSION['flash_message'] ?? null;

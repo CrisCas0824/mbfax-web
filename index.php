@@ -12,6 +12,28 @@ if (session_status() === PHP_SESSION_NONE) {
 // Cargar configuración de base de datos
 require_once __DIR__ . '/config/database.php';
 
+// SISTEMA DE TRACKING DE VISITAS
+try {
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    $fechaHoy = date('Y-m-d');
+    $sessionKey = "visited_" . $fechaHoy;
+
+    if (!isset($_SESSION[$sessionKey])) {
+        $db = Database::getConnection();
+        // Intentar registrar la visita. 
+        // SQLite no soporta INSERT IGNORE, soporta INSERT OR IGNORE, por lo que usaremos try-catch para ambos
+        try {
+            $stmt = $db->prepare("INSERT INTO visitas (ip_address, fecha_visita) VALUES (?, ?)");
+            $stmt->execute([$ip, $fechaHoy]);
+        } catch (PDOException $e) {
+            // Ignorar error si ya existe en SQLite o MySQL (Duplicate entry)
+        }
+        $_SESSION[$sessionKey] = true;
+    }
+} catch (Exception $e) {
+    // Ignorar errores de tracking para no romper la web
+}
+
 // Obtener la acción solicitada por la URL
 $action = isset($_GET['action']) ? trim(strip_tags($_GET['action'])) : 'home';
 

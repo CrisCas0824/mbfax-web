@@ -186,6 +186,22 @@
     <?php else: ?>
 
         <!-- DASHBOARD ADMIN MB FAX -->
+        <!-- ESTADÍSTICAS GLOBALES -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-xs text-center">
+                <span class="text-slate-400 font-bold text-[10px] uppercase block mb-1">Visitas Históricas</span>
+                <span class="font-brand font-black text-2xl text-blue-600"><?= number_format($visitasTotales ?? 0) ?></span>
+            </div>
+            <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-xs text-center">
+                <span class="text-slate-400 font-bold text-[10px] uppercase block mb-1">Visitas Hoy</span>
+                <span class="font-brand font-black text-2xl text-emerald-600"><?= number_format($visitasHoy ?? 0) ?></span>
+            </div>
+            <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-xs text-center">
+                <span class="text-slate-400 font-bold text-[10px] uppercase block mb-1">Total Sorteos</span>
+                <span class="font-brand font-black text-2xl text-rose-600"><?= count($sorteos) ?></span>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             <!-- 1. CREAR NUEVO SORTEO -->

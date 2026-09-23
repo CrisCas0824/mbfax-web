@@ -108,7 +108,7 @@
     <div id="antiguedad" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-8 shadow-xs scroll-mt-24 relative overflow-hidden">
         
         <!-- OVERLAY PRÓXIMAMENTE -->
-        <div class="absolute inset-0 z-50 bg-slate-200/60 backdrop-blur-[1px] flex items-center justify-center m-0">
+        <div class="absolute inset-0 z-30 bg-slate-200/60 backdrop-blur-[1px] flex items-center justify-center m-0">
             <div class="bg-white/90 border border-slate-300 p-6 rounded-2xl shadow-xl text-center max-w-xs mx-auto">
                 <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>

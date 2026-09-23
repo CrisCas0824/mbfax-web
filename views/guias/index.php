@@ -19,7 +19,7 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 relative">
     
     <!-- OVERLAY PRÓXIMAMENTE -->
-    <div class="absolute inset-0 z-50 bg-slate-50/80 backdrop-blur-[2px] flex items-center justify-center rounded-3xl m-2 md:m-4">
+    <div class="absolute inset-0 z-30 bg-slate-50/80 backdrop-blur-[2px] flex items-center justify-center rounded-3xl m-2 md:m-4">
         <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-xl text-center max-w-sm mx-auto transform -translate-y-10">
             <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
