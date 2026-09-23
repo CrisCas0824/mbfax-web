@@ -148,7 +148,9 @@
                         </form>
                     </div>
                 <?php endif; ?>
-            </div>    <?php else: ?>
+            </div>
+        <?php endif; ?>
+    <?php else: ?>
 
         <!-- DASHBOARD ADMIN MB FAX -->
         <!-- ESTADÍSTICAS GLOBALES -->
