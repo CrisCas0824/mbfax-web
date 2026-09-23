@@ -5,9 +5,8 @@
     }
   },
   "routes": [
-    { "handle": "filesystem" },
     {
-      "src": "/(.*)",
+      "src": "/(?!imagenes/|public/)(.*)",
       "dest": "/api/index.php"
     }
   ]
