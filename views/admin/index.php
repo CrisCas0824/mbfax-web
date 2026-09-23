@@ -68,25 +68,19 @@
                 </form>
             </div>
         <?php else: ?>
-            <?php $showRegisterFirst = empty($hasAdmin); ?>
             
-            <!-- CONTENEDOR LOGIN Y REGISTRO ADMIN -->
+            <!-- CONTENEDOR LOGIN ADMIN -->
             <div class="max-w-md mx-auto bg-white border border-slate-200 p-7 rounded-2xl shadow-xs space-y-5">
                 
-                <!-- TABS DE NAVEGACIÓN -->
-                <div class="flex border-b border-slate-200">
-                    <button type="button" id="tab-login-btn" onclick="switchAuthTab('login')" 
-                            class="flex-1 pb-2.5 text-center font-brand font-bold text-xs border-b-2 transition <?= !$showRegisterFirst ? 'border-rose-600 text-rose-700' : 'border-transparent text-slate-500 hover:text-slate-700' ?>">
-                        🔑 Iniciar Sesión
-                    </button>
-                    <button type="button" id="tab-register-btn" onclick="switchAuthTab('register')" 
-                            class="flex-1 pb-2.5 text-center font-brand font-bold text-xs border-b-2 transition <?= $showRegisterFirst ? 'border-emerald-600 text-emerald-700' : 'border-transparent text-slate-500 hover:text-slate-700' ?>">
-                        📝 Registrarse como Admin
-                    </button>
+                <!-- ENCABEZADO DE LOGIN -->
+                <div class="border-b border-slate-200 pb-2.5 mb-4 text-center">
+                    <span class="font-brand font-bold text-xs text-rose-700">
+                        🔑 Panel de Acceso
+                    </span>
                 </div>
 
                 <!-- FORMULARIO DE LOGIN -->
-                <div id="form-login" class="space-y-4 <?= $showRegisterFirst ? 'hidden' : '' ?>">
+                <div id="form-login" class="space-y-4">
                     <div class="text-center space-y-1">
                         <h2 class="font-brand font-bold text-base text-slate-900">Iniciar Sesión Admin</h2>
                         <p class="text-xs text-slate-500">Ingresa tus credenciales para administrar el hub MB FAX.</p>
@@ -109,81 +103,11 @@
                             Acceder al Panel
                         </button>
                     </form>
-
-                    <p class="text-center text-xs text-slate-500 pt-1">
-                        ¿Primera vez aquí? <a href="#" onclick="switchAuthTab('register'); return false;" class="text-rose-600 hover:underline font-bold">Regístrate como Admin aquí</a>
+                    <p class="text-center text-xs text-rose-600 pt-1 font-bold">
+                        🔒 Panel reservado solo para el administrador MB FAX.
                     </p>
                 </div>
-
-                <!-- FORMULARIO DE REGISTRO -->
-                <div id="form-register" class="space-y-4 <?= !$showRegisterFirst ? 'hidden' : '' ?>">
-                    <div class="text-center space-y-1">
-                        <h2 class="font-brand font-bold text-base text-slate-900">Registro de Administrador</h2>
-                        <p class="text-xs text-slate-500">Crea tu cuenta de administrador por primera vez.</p>
-                    </div>
-
-                    <form action="index.php?action=admin_register" method="POST" class="space-y-3.5">
-                        <div>
-                            <label for="reg_nombre" class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo o Nick:</label>
-                            <input type="text" id="reg_nombre" name="nombre" placeholder="Ej: Streamer MB FAX" 
-                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-rose-600 focus:bg-white transition shadow-xs">
-                        </div>
-
-                        <div>
-                            <label for="reg_username" class="block text-xs font-bold text-slate-700 uppercase mb-1">Usuario Admin:</label>
-                            <input type="text" id="reg_username" name="username" required placeholder="Ej: admin_mbfax" 
-                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-rose-600 focus:bg-white transition shadow-xs">
-                        </div>
-
-                        <div>
-                            <label for="reg_password" class="block text-xs font-bold text-slate-700 uppercase mb-1">Contraseña:</label>
-                            <input type="password" id="reg_password" name="password" required placeholder="••••••••" 
-                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-rose-600 focus:bg-white transition shadow-xs">
-                        </div>
-
-                        <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-brand font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-xs">
-                            Crear Cuenta Admin
-                        </button>
-                    </form>
-
-                    <p class="text-center text-xs text-slate-500 pt-1">
-                        ¿Ya tienes cuenta? <a href="#" onclick="switchAuthTab('login'); return false;" class="text-rose-600 hover:underline font-bold">Inicia sesión aquí</a>
-                    </p>
-                </div>
-
-            </div>
-        <?php endif; ?>
-
-        <script>
-            function switchAuthTab(tab) {
-                const loginForm = document.getElementById('form-login');
-                const regForm = document.getElementById('form-register');
-                const loginBtn = document.getElementById('tab-login-btn');
-                const regBtn = document.getElementById('tab-register-btn');
-
-                if (tab === 'register') {
-                    loginForm.classList.add('hidden');
-                    regForm.classList.remove('hidden');
-                    
-                    regBtn.classList.remove('border-transparent', 'text-slate-500');
-                    regBtn.classList.add('border-emerald-600', 'text-emerald-700');
-                    
-                    loginBtn.classList.remove('border-rose-600', 'text-rose-700');
-                    loginBtn.classList.add('border-transparent', 'text-slate-500');
-                } else {
-                    regForm.classList.add('hidden');
-                    loginForm.classList.remove('hidden');
-                    
-                    loginBtn.classList.remove('border-transparent', 'text-slate-500');
-                    loginBtn.classList.add('border-rose-600', 'text-rose-700');
-                    
-                    regBtn.classList.remove('border-emerald-600', 'text-emerald-700');
-                    regBtn.classList.add('border-transparent', 'text-slate-500');
-                }
-            }
-        </script>
-
-    <?php else: ?>
+            </div>    <?php else: ?>
 
         <!-- DASHBOARD ADMIN MB FAX -->
         <!-- ESTADÍSTICAS GLOBALES -->
