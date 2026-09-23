@@ -5,7 +5,8 @@ $path = parse_url($uri, PHP_URL_PATH);
 
 // Forzar la lectura de imágenes si Vercel Edge Network falla
 if (preg_match('/\.(png|jpg|jpeg|gif|svg|ico)$/i', $path)) {
-    $realPath = realpath(__DIR__ . '/..' . $path);
+    $decodedPath = urldecode($path);
+    $realPath = realpath(__DIR__ . '/..' . $decodedPath);
     if ($realPath && file_exists($realPath)) {
         $ext = strtolower(pathinfo($realPath, PATHINFO_EXTENSION));
         $mimes = [
