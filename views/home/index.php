@@ -80,7 +80,7 @@ require_once __DIR__ . '/../layouts/header.php';
                     
                     <!-- IMAGEN DE PERFIL -->
                     <div class="relative inline-block overflow-hidden rounded-2xl transition-all duration-300 group">
-                        <img src="imagenes/logo/PERFIL FACEBOOK1.png" 
+                        <img src="imagenes/logo/descarga.png" 
                             alt="MB FAX Perfil Streamer" 
                             class="w-[280px] h-[280px] mx-auto object-cover transition-transform duration-500 ease-out group-hover:scale-110">
                     </div>
