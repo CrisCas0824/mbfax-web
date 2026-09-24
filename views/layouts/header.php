@@ -6,8 +6,8 @@
     <title><?= htmlspecialchars($pageTitle ?? 'MB FAX - Free Fire Community & Sorteos', ENT_QUOTES, 'UTF-8') ?></title>
     
     <!-- SEO Básico -->
-    <meta name="description" content="Plataforma oficial MB FAX. Sorteos de Diamantes, Pases Élite, Guías Meta y Herramientas para la comunidad de Free Fire.">
-    <meta name="keywords" content="sorteos free fire, diamantes gratis, pases booyah, mb fax, generador de nicks, espacio invisible, free fire latam">
+    <meta name="description" content="Plataforma oficial MB FAX Web. Sorteos de Diamantes Gratis, Nombres para Free Fire, Espacio Invisible y Ver tu Antigüedad en Free Fire.">
+    <meta name="keywords" content="nombres para free fire, espacio invisible, mb fax web, mb fax web free fire, ver mi antiguedad free fire, diamantes gratis, diamantes gratis free fire, sorteos free fire, mb fax">
     <meta name="author" content="MB FAX">
     <meta name="robots" content="index, follow">
 
